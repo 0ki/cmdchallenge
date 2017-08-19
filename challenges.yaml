@@ -637,18 +637,23 @@
     description: |
       In the current directory there is a file called netstat.out
       print all the IPv4 listening ports sorted from the higher to lower.
-    example: egrep  "tcp\ .*:**LISTEN" netstat.out | awk '{print $4}' | sed -e 's/.*\://g' | sort -nr
+    example: cat netstat.out | grep ^..p\  | awk '{print $4}' | cut -d : -f 2 | sort -nru
     expected_output:
       lines:
+        - '46808'
         - '45922'
+        - '13399'
         - '9090'
         - '8080'
         - '1723'
         - '1254'
         - '1244'
         - '1234'
+        - '1012'
+        - '909'
         - '111'
         - '80'
+        - '68'
         - '22'
   - slug: rot13_decoding
     version: 4
